@@ -55,10 +55,10 @@ describe('WordleBoard', () => {
         {wordOfTheDay: "words", reason:"Word of the day must be in uppercase"},
         {wordOfTheDay: "GIBBR", reason:"Word of the day must be a real English word"}
       ]
-    )("Since $reason: $wordOfTheDay is invlaid, therefore a warning must be issued", async(wordOfTheDay) =>{
+    )("Since $reason: $wordOfTheDay is invlaid, therefore a warning must be issued", async({wordOfTheDay: string}) =>{
       mount(WordleBoard, {props:{wordOfTheDay}})
       
-      expect(console.warn).toHaveBeenCalled() 
+      expect(console.warn).toHaveBeenCalled 
     })
     
     test("no warning if the word of the day is a real 5 letter English word in uppercase", async()=>{

@@ -5,7 +5,7 @@ import englishWords from "@/englishWordsWith5Letters.json"
 defineProps({ 
   wordOfTheDay: {
     type: String,
-    validator: (wordGiven: String) => englishWords.includes(wordGiven)
+    validator: (wordGiven: string) => englishWords.includes(wordGiven)
   }
 })
 
@@ -32,7 +32,7 @@ function onSubmit(){
   if(!englishWords.includes(formattedGuessInProgress.value)){
     return;
   }
-  formattedGuessInProgress.value= formattedGuessInProgress.value
+  guessSubmitted.value= formattedGuessInProgress.value
 }
 
 </script>
@@ -42,6 +42,6 @@ function onSubmit(){
         maxlength="WORD_SIZE"
         type="text"
         @keydown.enter="onSubmit">
-  <p v-if="guessSubmitted.length" > 0" 
-      v-text="guessSubmitted === wordOfTheDay ? {{VICTORY_MESSAGE}} : {{DEFEAT_MESSAGE}}"></p>
+  <p v-if="guessSubmitted.length > 0" 
+      v-text="guessSubmitted === wordOfTheDay ? VICTORY_MESSAGE : DEFEAT_MESSAGE"/>
 </template>
