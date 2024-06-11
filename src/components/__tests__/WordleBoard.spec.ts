@@ -47,14 +47,14 @@ describe('WordleBoard', () => {
 
     test.each(
       [
-        "FLY",
-        "words",
-        "GIBBR"
+        {wordOfTheDay: "FLY", reason:"Word of the day must have 5 characters"},
+        {wordOfTheDay: "words", reason:"Word of the day must be in uppercase"},
+        {wordOfTheDay: "GIBBR", reason:"Word of the day must be a real English word"}
       ]
-    )("If %s is provided, a warning is emitted", async(wordOfTheDay) =>{
+    )("Since $reason: $wordOfTheDay is invlaid, therefore a warning must be issued", async(wordOfTheDay) =>{
       console.warn= vi.fn()
   
-      mount(WordleBoard, {props:{wordOfTheDay: wordOfTheDay}})
+      mount(WordleBoard, {props:{wordOfTheDay}})
       
       expect(console.warn).toHaveBeenCalled() 
     })
