@@ -5,6 +5,7 @@ import WordleBoard from '../WordleBoard.vue'
 import {VICTORY_MESSAGE} from "../../settings"
 import {DEFEAT_MESSAGE} from "../../settings"
 import {WORD_SIZE} from "../../settings"
+import exp from 'constants'
 
 describe('WordleBoard', () => {
   let wordOfTheDay= "TESTS"
@@ -84,7 +85,12 @@ describe('WordleBoard', () => {
       await playerSubmitsGuess(wordOfTheDay.toLowerCase())
       expect(wrapper.text()).toContain(VICTORY_MESSAGE)
     })
-    test.todo("player guesses can only contain letters")
+    test("player guesses can only contain letters", async()=>{
+      await playerSubmitsGuess("J3J3M")
+
+      expect(wrapper.find<HTMLInputElement>('input[type=text]').element.value).toEqual('JJM')
+    })
   })
 
 })
+
