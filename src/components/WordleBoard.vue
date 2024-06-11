@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { VICTORY_MESSAGE, DEFEAT_MESSAGE } from '@/settings';
 import {ref} from "vue"
-defineProps<{ wordOfTheDay: string }>()
+defineProps({ 
+  wordOfTheDay: {
+    type: String,
+    validator: (wordGiven: String) => wordGiven.length === 5
+  }
+})
 
 const guessInProgress= ref("")
 const guessSubmitted= ref("")
