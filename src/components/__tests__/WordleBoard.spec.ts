@@ -55,4 +55,12 @@ describe('WordleBoard', () => {
     
     expect(console.warn).toHaveBeenCalled() 
   })
+
+  test("Must be a real word", async()=>{
+    console.warn= vi.fn()
+
+    mount(WordleBoard, {props:{wordOfTheDay:"GIBBR"}})
+    
+    expect(console.warn).toHaveBeenCalled() 
+  })
 })
