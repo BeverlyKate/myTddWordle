@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VICTORY_MESSAGE } from '@/settings';
+import { DEFEAT_MESSAGE } from '@/settings';
 defineProps<{
   wordOfTheDay: string
 }>()
@@ -9,5 +10,5 @@ defineProps<{
   <input type="text">
   <p>{{ wordOfTheDay }}</p>
   <p>{{VICTORY_MESSAGE}}</p>
-  <p>"Better luck next time!"</p>
+  <p>{{DEFEAT_MESSAGE}}</p>
 </template>
