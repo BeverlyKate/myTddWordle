@@ -41,8 +41,10 @@ describe('WordleBoard', () => {
   })
 
   test("If a word of the day is over 5 letters, a warning is emitted", async() =>{
-    vi.spyOn(console, "warn")
+    console.warn= vi.fn()
+
     mount(WordleBoard, {props:{wordOfTheDay:"FLY"}})
+    
     expect(console.warn).toHaveBeenCalled() 
   })
 })
