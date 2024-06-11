@@ -5,9 +5,7 @@ import englishWords from "@/englishWordsWith5Letters.json"
 defineProps({ 
   wordOfTheDay: {
     type: String,
-    validator: (wordGiven: String) => wordGiven.length === 5 
-    && wordGiven.toUpperCase() === wordGiven 
-    && englishWords.includes(wordGiven)
+    validator: (wordGiven: String) => englishWords.includes(wordGiven)
   }
 })
 
